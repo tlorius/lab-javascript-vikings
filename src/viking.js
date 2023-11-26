@@ -87,3 +87,43 @@ class War {
         }
     }
 }
+
+// Generate random armies
+
+function generateArmies() {
+    const firstWar = new War(); //Generating up to 5 Vikings with randomized stats and adding them to the army
+    const vikNames = ["Erik", "Freyja", "Ragnar", "Astrid", "Bjorn", "Ingrid", "Olaf", "Sigrun", "Leif", "Helga"];
+    let vikNum = Math.ceil(Math.random() * 5);
+    for (genVik = 0; genVik < vikNum; genVik += 1){
+        let tempVikName = vikNames[Math.floor(Math.random() * vikNames.length)];
+        let tempVikHealth = Math.ceil(Math.random() * 30);
+        let tempVikStrength = Math.ceil(Math.random() * 60);
+        tempViking = new Viking(tempVikName, tempVikHealth, tempVikStrength);
+        firstWar.addViking(tempViking);
+    }
+
+    let saxNum = Math.ceil(Math.random() * 10); //Generating up to 10 Saxons with randomized stats and adding them to the army
+    for (genSax = 0; genSax < saxNum; genSax += 1){
+        let tempSaxHealth = Math.ceil(Math.random() * 15);
+        let tempSaxStrength = Math.ceil(Math.random() * 20);
+        tempSaxon = new Saxon(tempSaxHealth, tempSaxStrength);
+        firstWar.addSaxon(tempSaxon);
+    }//Works until here
+    
+    let warStatus = `Vikings and Saxons are still in the thick of battle.`; //Looping through attacks until the status changes to one side winning, logging all updates
+    while (warStatus === `Vikings and Saxons are still in the thick of battle.`) {
+        console.log(firstWar.vikingAttack());
+        warStatus = firstWar.showStatus();
+        if (warStatus !== `Vikings and Saxons are still in the thick of battle.`){ // bandaid solution to prevent error if saxon army is empty before attack.
+            console.log(warStatus);
+            break;
+        }
+        console.log(firstWar.saxonAttack());
+        warStatus = firstWar.showStatus();
+        console.log(warStatus);
+        console.log("");
+    }
+    
+}
+
+generateArmies();
