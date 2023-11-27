@@ -96,9 +96,9 @@ function generateArmies() {
     let vikNum = Math.ceil(Math.random() * 5);
     for (genVik = 0; genVik < vikNum; genVik += 1){
         let tempVikName = vikNames[Math.floor(Math.random() * vikNames.length)];
-        let tempVikHealth = Math.ceil(Math.random() * 30);
+        let tempVikHealth = Math.ceil(Math.random() * 40);
         let tempVikStrength = Math.ceil(Math.random() * 60);
-        tempViking = new Viking(tempVikName, tempVikHealth, tempVikStrength);
+        let tempViking = new Viking(tempVikName, tempVikHealth, tempVikStrength);
         firstWar.addViking(tempViking);
     }
 
@@ -106,9 +106,9 @@ function generateArmies() {
     for (genSax = 0; genSax < saxNum; genSax += 1){
         let tempSaxHealth = Math.ceil(Math.random() * 15);
         let tempSaxStrength = Math.ceil(Math.random() * 20);
-        tempSaxon = new Saxon(tempSaxHealth, tempSaxStrength);
+        let tempSaxon = new Saxon(tempSaxHealth, tempSaxStrength);
         firstWar.addSaxon(tempSaxon);
-    }//Works until here
+    }
     
     let warStatus = `Vikings and Saxons are still in the thick of battle.`; //Looping through attacks until the status changes to one side winning, logging all updates
     while (warStatus === `Vikings and Saxons are still in the thick of battle.`) {
